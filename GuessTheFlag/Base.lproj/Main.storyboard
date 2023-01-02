@@ -17,19 +17,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylp-EQ-C8y">
-                                <rect key="frame" x="84.666666666666686" y="100" width="224" height="114"/>
+                                <rect key="frame" x="96.666666666666686" y="100" width="200" height="100"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="uk"/>
+                                <buttonConfiguration key="configuration" style="plain" image="uk">
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttontabbed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZlP-cr-vbi"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06L-1b-Vcq">
-                                <rect key="frame" x="84.666666666666686" y="244" width="224" height="114"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06L-1b-Vcq">
+                                <rect key="frame" x="96.666666666666686" y="230" width="200" height="100"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="uk"/>
+                                <buttonConfiguration key="configuration" style="plain" image="uk">
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttontabbed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bBu-ef-pYb"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gz-fr-8eW">
-                                <rect key="frame" x="84.666666666666686" y="388" width="224" height="114"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gz-fr-8eW">
+                                <rect key="frame" x="96.666666666666686" y="360" width="200" height="100"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="uk"/>
+                                <buttonConfiguration key="configuration" style="plain" image="uk">
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttontabbed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8L-Ai-ckX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -45,7 +60,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="sVK-CW-WnL"/>
                     <connections>
-                        <outlet property="button1" destination="06L-1b-Vcq" id="m7e-Vu-Iw3"/>
+                        <outlet property="button1" destination="ylp-EQ-C8y" id="CMN-Wb-yq5"/>
                         <outlet property="button2" destination="06L-1b-Vcq" id="NVb-Fr-68B"/>
                         <outlet property="button3" destination="7gz-fr-8eW" id="LUJ-4r-LFV"/>
                     </connections>
