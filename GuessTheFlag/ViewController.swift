@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         
         askQuestions(action: nil)
         
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show Score",style: .plain ,target: self, action: #selector(shareButton))
     }
     
     // Shuffle the order of items in countries array and set each button with a random image
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         button2.setImage(UIImage (named: countries[1]), for: .normal)
         button3.setImage(UIImage (named: countries[2]), for: .normal)
         
-        title = countries[correctAnswer].uppercased() + " | Score: \(score)"
+        title = countries[correctAnswer].uppercased()
         
     }
 
@@ -90,6 +90,13 @@ class ViewController: UIViewController {
         }
         
         
+    }
+    @objc func shareButton(){
+        let vc = UIAlertController(title: "Score:", message: "\(score)", preferredStyle: .alert)
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        vc.addAction(UIAlertAction(title: "Ok", style: .default))
+        
+        present(vc, animated: true)
     }
     
 }
