@@ -22,10 +22,18 @@ class ViewController: UIViewController {
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
     
+    let defaults = UserDefaults.standard
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
     var count = 0
+    var oldScore = 0 {
+        didSet{
+            let savedScore = defaults.integer(forKey: "score")
+            oldScore = savedScore
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,7 +51,10 @@ class ViewController: UIViewController {
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
         askQuestions(action: nil)
+        let savedScore = defaults.integer(forKey: "score")
+        oldScore = savedScore
         
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show Score",style: .plain ,target: self, action: #selector(shareButton))
     }
     
@@ -77,22 +88,41 @@ class ViewController: UIViewController {
         
 //        let ac = UIAlertController(title: title, message: "Your score is: \(score)", preferredStyle: .alert)
 //        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
+        let ac = UIAlertController(title: title, message: "Your score is: \(score)", preferredStyle: .alert)
         if count == 10{
             let ac = UIAlertController(title: title, message: "You have Answered 10 Questions, Your final score is: \(score)", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Start Over", style: .default, handler: askQuestions))
             present(ac, animated: true)
+            
             score = 0
         }
         else{
-            let ac = UIAlertController(title: title, message: "Your score is: \(score)", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
             present(ac, animated: true)
         }
         
+        if (score > oldScore){
+            let ac2 = UIAlertController(title: "Good job!", message: "You managed to beat the previous high score!", preferredStyle: .alert)
+            ac2.addAction(UIAlertAction(title: "Yay!", style: .default))
+            if self.presentedViewController==nil{
+                
+                self.present(ac, animated: true)
+            }else{
+                self.presentedViewController!.present(ac2, animated: true, completion: nil)
+            }
+        }
+        
+        defaults.set(score, forKey: "score")
+        print(score)
+        print(oldScore)
         
     }
+    
+    
     @objc func shareButton(){
-        let vc = UIAlertController(title: "Score:", message: "\(score)", preferredStyle: .alert)
+        
+        let savedScore = defaults.integer(forKey: "score")
+        let vc = UIAlertController(title: "Old Score: \(savedScore)\n New Score: " , message: "\(score)", preferredStyle: .alert)
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         vc.addAction(UIAlertAction(title: "Ok", style: .default))
         
